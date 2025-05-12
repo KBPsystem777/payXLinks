@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
-import "./globals.css";
+
 import { Providers } from "./providers";
 
+import "./globals.css";
+import "@coinbase/onchainkit/styles.css";
+
 export const metadata: Metadata = {
-  title: "bpxpay-links",
-  description: "Created with bpxpay",
+  title: "bpxpay",
+  description: "Created by bpxpay",
   generator: "bpxpay.dev",
 };
 

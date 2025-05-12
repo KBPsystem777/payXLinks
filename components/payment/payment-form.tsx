@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
@@ -35,7 +35,7 @@ export function PaymentForm() {
   const router = useRouter();
   const [amount, setAmount] = useState("");
   const [currency, setCurrency] = useState("USDC");
-  const [network, setNetwork] = useState("ethereum");
+  const [network, setNetwork] = useState("base");
   const [description, setDescription] = useState("");
   const [tags, setTags] = useState("");
   const [visibility, setVisibility] = useState("public");
@@ -169,40 +169,46 @@ export function PaymentForm() {
             />
           </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="tags" className="text-blue-900">
-              {content.fields.tags}
-            </Label>
-            <Input
-              id="tags"
-              placeholder={content.fields.tagsPlaceholder}
-              className="border-blue-200 focus:border-blue-400 focus:ring-blue-400"
-              value={tags}
-              onChange={(e) => setTags(e.target.value)}
-            />
-          </div>
+          {content.fields.showTags && (
+            <div className="space-y-2">
+              <Label htmlFor="tags" className="text-blue-900">
+                {content.fields.tags}
+              </Label>
+              <Input
+                id="tags"
+                placeholder={content.fields.tagsPlaceholder}
+                className="border-blue-200 focus:border-blue-400 focus:ring-blue-400"
+                value={tags}
+                onChange={(e) => setTags(e.target.value)}
+              />
+            </div>
+          )}
 
-          <div className="space-y-2">
-            <Label className="text-blue-900">{content.fields.visibility}</Label>
-            <RadioGroup
-              value={visibility}
-              onValueChange={setVisibility}
-              className="flex gap-4"
-            >
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem value="public" id="public" />
-                <Label htmlFor="public" className="font-normal">
-                  {content.fields.visibilityOptions.public}
-                </Label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem value="private" id="private" />
-                <Label htmlFor="private" className="font-normal">
-                  {content.fields.visibilityOptions.private}
-                </Label>
-              </div>
-            </RadioGroup>
-          </div>
+          {content.fields.showVisibilityOptions && (
+            <div className="space-y-2">
+              <Label className="text-blue-900">
+                {content.fields.visibility}
+              </Label>
+              <RadioGroup
+                value={visibility}
+                onValueChange={setVisibility}
+                className="flex gap-4"
+              >
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="public" id="public" />
+                  <Label htmlFor="public" className="font-normal">
+                    {content.fields.visibilityOptions.public}
+                  </Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="private" id="private" />
+                  <Label htmlFor="private" className="font-normal">
+                    {content.fields.visibilityOptions.private}
+                  </Label>
+                </div>
+              </RadioGroup>
+            </div>
+          )}
         </CardContent>
         <CardFooter>
           <Button

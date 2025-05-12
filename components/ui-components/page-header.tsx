@@ -47,7 +47,7 @@ export function PageHeader({
               </Link>
             </Button>
           )}
-          <h1 className="text-2xl font-bold text-blue-900">{title}</h1>
+          <h1 className="font-bold text-blue-900">{title}</h1>
         </div>
         {children}
       </div>

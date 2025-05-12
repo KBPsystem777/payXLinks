@@ -7,7 +7,7 @@ const getCurrentYear = () => {
 };
 
 export const siteConfig = {
-  name: "BPxPay",
+  name: "bpxpay",
   description: "Fast, Secure, and Cost-Effective Digital Payments",
   logo: "https://pay.bpxai.com/assets/bpxpay-logo-C9_15mfN.png",
   footer: `© ${getCurrentYear()} BPxPay. All rights reserved.`,
@@ -17,7 +17,7 @@ export const siteConfig = {
     website: "https://pay.bpxai.com",
   },
   baseUrl: "https://pay.bpxai.com",
-  shortLinkDomain: "bpx.pay/",
+  shortLinkDomain: "link.bpxai.com/",
   showLogo: false,
 };
 
@@ -89,6 +89,7 @@ export const homepageContent = {
       icon: "DollarSign",
     },
   ],
+  showTestimonials: false,
   testimonials: [
     {
       quote:
@@ -163,6 +164,8 @@ export const createPageContent = {
       public: "Public - Anyone can see this link",
       private: "Private - Only accessible with direct link",
     },
+    showVisibilityOptions: false,
+    showTags: false,
   },
   buttons: {
     generate: "Generate Payment Link",
@@ -231,6 +234,7 @@ export const paymentPageContent = {
     notice:
       "Demo Mode: No actual transactions will be made. This is a demonstration of the payment flow.",
   },
+  showLogo: false,
 };
 
 export const dashboardContent = {

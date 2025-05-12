@@ -1,6 +1,6 @@
 import type React from "react";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+
 import {
   ArrowRight,
   Plus,
@@ -15,6 +15,8 @@ import {
   DollarSign,
   Check,
 } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
 import { PageLayout } from "@/components/ui-components/page-layout";
 import { PageHeader } from "@/components/ui-components/page-header";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -24,15 +26,11 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { homepageContent, siteConfig } from "@/lib/content";
-import { ConnectAndSIWE } from "@/components/ConnectAndSIWE";
+import { ConnectWalletButton } from "@/components/ConnectWallet";
 
-import {
-  Wallet as OckWallet,
-  ConnectWallet,
-  WalletModal,
-  WalletDropdown,
-} from "@coinbase/onchainkit/wallet";
+import { homepageContent, siteConfig } from "@/lib/content";
+
+import DataPage from "@/components/data";
 
 export default function Home() {
   const content = homepageContent;
@@ -57,13 +55,7 @@ export default function Home() {
     <PageLayout>
       <PageHeader title={siteConfig.name} showLogo={siteConfig.showLogo}>
         <div className="flex gap-2">
-          <Button
-            variant="outline"
-            className="text-blue-600 border-blue-200 hover:bg-blue-50"
-          >
-            Connect your wallet
-          </Button>
-          <Button className="bg-blue-600 hover:bg-blue-700">Sign Up</Button>
+          <ConnectWalletButton />
         </div>
       </PageHeader>
 
@@ -154,39 +146,40 @@ export default function Home() {
         </section>
 
         {/* Testimonials Section */}
-        <section className="py-20 bg-white">
-          <div className="container mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-12 text-blue-900">
-              What Our Users Say
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {content.testimonials.map((testimonial, index) => (
-                <Card
-                  key={index}
-                  className="bg-blue-50 border-blue-100 shadow-sm"
-                >
-                  <CardContent className="pt-6">
-                    <p className="text-blue-700 italic mb-4">
-                      "{testimonial.quote}"
-                    </p>
-                    <div className="flex items-center">
-                      <div className="w-10 h-10 rounded-full bg-blue-200 mr-3"></div>
-                      <div>
-                        <p className="font-semibold text-blue-900">
-                          {testimonial.author}
-                        </p>
-                        <p className="text-sm text-blue-600">
-                          {testimonial.role}
-                        </p>
+        {content.showTestimonials && (
+          <section className="py-20 bg-white">
+            <div className="container mx-auto">
+              <h2 className="text-3xl font-bold text-center mb-12 text-blue-900">
+                What Our Users Say
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {content.testimonials.map((testimonial, index) => (
+                  <Card
+                    key={index}
+                    className="bg-blue-50 border-blue-100 shadow-sm"
+                  >
+                    <CardContent className="pt-6">
+                      <p className="text-blue-700 italic mb-4">
+                        "{testimonial.quote}"
+                      </p>
+                      <div className="flex items-center">
+                        <div className="w-10 h-10 rounded-full bg-blue-200 mr-3"></div>
+                        <div>
+                          <p className="font-semibold text-blue-900">
+                            {testimonial.author}
+                          </p>
+                          <p className="text-sm text-blue-600">
+                            {testimonial.role}
+                          </p>
+                        </div>
                       </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
-
+          </section>
+        )}
         {/* FAQ Section */}
         <section className="py-20 bg-blue-50">
           <div className="container mx-auto">
@@ -231,6 +224,7 @@ export default function Home() {
           </div>
         </section>
       </main>
+      <DataPage />
     </PageLayout>
   );
 }

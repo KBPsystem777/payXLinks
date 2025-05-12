@@ -14,8 +14,10 @@ export default function CreatePaymentLink() {
         showLogo={siteConfig.showLogo}
       />
 
-      <main className="container mx-auto flex-1 py-12">
-        <PaymentForm />
+      <main className="flex-1 px-4 py-8 sm:px-6 md:px-8 lg:px-0 flex justify-center">
+        <div className="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl">
+          <PaymentForm />
+        </div>
       </main>
       <Toaster />
     </PageLayout>

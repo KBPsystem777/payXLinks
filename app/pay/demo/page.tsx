@@ -5,6 +5,7 @@ import { PageHeader } from "@/components/ui-components/page-header";
 import { PaymentRequest } from "@/components/payment/payment-request";
 import { Toaster } from "@/components/ui/toaster";
 import { paymentPageContent, siteConfig } from "@/lib/content";
+import { networkInterfaces } from "os";
 
 export default function DemoPaymentPage() {
   // Demo payment details
@@ -14,6 +15,7 @@ export default function DemoPaymentPage() {
     currency: "USDC",
     description: "Demo payment request",
     tags: "demo,test",
+    network: "Base",
   };
 
   return (
